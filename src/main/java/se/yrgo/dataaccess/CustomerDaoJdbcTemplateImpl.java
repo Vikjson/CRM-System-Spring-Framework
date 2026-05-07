@@ -1,8 +1,10 @@
 package se.yrgo.dataaccess;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import se.yrgo.domain.Call;
 import se.yrgo.domain.Customer;
 
@@ -11,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-
+@Repository
 public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     private static final String UPDATE_SQL = "UPDATE CUSTOMER SET COMPANY_NAME=?, EMAIL=?, TELEPHONE=?, NOTES=? WHERE CUSTOMER_ID=?";
     private static final String INSERT_SQL = "INSERT INTO CUSTOMER (CUSTOMER_ID, COMPANY_NAME, EMAIL, TELEPHONE, NOTES) VALUES (?, ?, ?, ?, ?)";
@@ -24,6 +26,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     private static final String GET_CALLS_FOR_CUSTOMER_SQL = "SELECT ID, TIME_AND_DATE, NOTES FROM CUSTOMER_CALL WHERE CUSTOMER_ID=?";
 
     private JdbcTemplate template;
+
 
     public CustomerDaoJdbcTemplateImpl(JdbcTemplate template) {
         this.template = template;

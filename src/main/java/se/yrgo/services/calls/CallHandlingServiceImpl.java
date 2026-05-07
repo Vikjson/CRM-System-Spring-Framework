@@ -1,5 +1,8 @@
 package se.yrgo.services.calls;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import se.yrgo.domain.Action;
 import se.yrgo.domain.Call;
 import se.yrgo.services.customers.CustomerManagementService;
@@ -8,8 +11,12 @@ import se.yrgo.services.diary.DiaryManagementService;
 
 import java.util.Collection;
 
+@Service
+@Transactional
 public class CallHandlingServiceImpl implements CallHandlingService {
+    @Autowired
     private CustomerManagementService customerManagementService;
+    @Autowired
     private DiaryManagementService diaryManagementService;
 
 
