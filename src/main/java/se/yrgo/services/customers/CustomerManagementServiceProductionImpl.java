@@ -1,5 +1,6 @@
 package se.yrgo.services.customers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import se.yrgo.dataaccess.CustomerDao;
@@ -14,7 +15,7 @@ import se.yrgo.domain.Customer;
 @Service
 @Transactional
 public class CustomerManagementServiceProductionImpl implements CustomerManagementService {
-
+    @Autowired
     private CustomerDao customerDao;
 
     public void setCustomerDao(CustomerDao customerDao) {
